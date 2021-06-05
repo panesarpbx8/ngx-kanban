@@ -1,0 +1,53 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 300px;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(118, 126, 138, 0.13);
+  background-color: white;
+}
+
+.logo {
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+
+.page-title {
+  font-size: 1.5rem;
+}
+
+.fill-space {
+  flex: 1;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  .name {
+    font-size: 1.1rem;
+  }
+  img {
+    border-radius: 50%;
+    height: 40px;
+    width: auto;
+    box-shadow: 0 0 5px rgba(118, 126, 138, 0.438);
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .sidenav {
+    width: 250px;
+  }
+}

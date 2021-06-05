@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Add new task</h1>
+<mat-dialog-content>
+	<div class="input-box mb-3">
+		<label class="mb-2">Enter description</label>
+		<input type="text" name="description" class="px-2 py-2" [(ngModel)]="task.content" autocomplete="off" placeholder="description">
+	</div>
+</mat-dialog-content>
+<mat-dialog-actions>
+	<button mat-button mat-dialog-close [mat-dialog-close]="task" color="accent" class="px-3 mr-1 accent-border">
+		<span>Add task</span>
+	</button>
+	<button mat-button (click)="cancel()" color="warn">Cancel</button>
+</mat-dialog-actions>

@@ -1,0 +1,16 @@
+<div *ngIf="boards; else loading" 
+  class="boards"
+  cdkDropList
+  cdkDropListOrientation="horizontal"
+  (cdkDropListDropped)="drop($event)">
+  <app-board cdkDrag *ngFor="let board of boards" [board]="board">
+    <mat-icon class="drag-handle" cdkDragHandle>drag_indicator</mat-icon>
+  </app-board>
+  <div class="p-3 new-board">
+    <button mat-stroked-button color="accent" (click)="openNewBoardDialog()">New board</button>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Loading</p>
+</ng-template>

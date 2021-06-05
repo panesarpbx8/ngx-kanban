@@ -1,0 +1,33 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+    <mat-nav-list>
+      <a mat-list-item (click)="close()" routerLink="/dashboard">Dashboard</a>
+      <a mat-list-item (click)="auth.googleLogin();close()">Google Login</a>
+      <a mat-list-item (click)="logout()">Logout</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <nav [ngClass]="(isHandset$ | async) ? 'px-3' : 'px-4'">
+      <button
+        type="button"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <a class="logo" routerLink="/">KanBan</a>
+      <span class="fill-space"></span>
+      <div *ngIf="user$ | async as user" class="user-info">
+        <span class="name">{{ user.displayName.split(' ')[0] }}</span>
+        <img [src]="user.photoURL" alt="user_image">
+      </div>
+    </nav>
+    <!-- Add Content Here -->
+    <div class="p-3">
+      <ng-content></ng-content>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

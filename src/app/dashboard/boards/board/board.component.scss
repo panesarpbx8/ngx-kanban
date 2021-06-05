@@ -1,0 +1,68 @@
+mat-card {
+  box-shadow: 0 0 10px rgba(118, 126, 138, 0.13);
+}
+
+.board-heading {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.task {
+  border-radius: 5px;
+  font-size: 1.1rem;
+  box-shadow: 0 0 5px rgba(118, 126, 138, 0.13);
+  cursor: pointer;
+}
+
+.task.red {
+  background-color: #E74A4A;
+  color: white;
+}
+
+.task.skyblue {
+  background-color: #71DEFF;
+  color: rgb(56, 61, 70);
+}
+
+.task.yellow {
+  background-color: #FFCF44;
+  color: rgb(56, 61, 70);
+}
+
+.task.teal {
+  background-color: #2dccaa;
+  color: white;
+}
+
+.task.purple {
+  background-color: #B15CFF;
+  color: white;
+}
+
+
+
+/* Highlight the list item that is being dragged. */
+.cdk-drag-preview {
+  // border-radius: 4px;
+  box-sizing: border-box;
+  // transition: 300ms ease height;
+  // box-shadow: 0 0 10px rgba(119, 128, 136, 0.507);
+  // box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  //             0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  //             0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+/* Animate items as they're being sorted. */
+.cdk-drop-list-dragging .cdk-drag {
+  transition: transform 250ms ease;
+}
+
+/* Animate an item that has been dropped. */
+.cdk-drag-animating {
+  transition: transform 300ms ease;
+}
+
+.cdk-drag-placeholder {
+  opacity: .3;
+}

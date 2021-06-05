@@ -1,1 +1,119 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '~@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+
+$md-kanban-primary: (
+  50 : #e8f0fe,
+  100 : #c6dafc,
+  200 : #a0c1fa,
+  300 : #7aa8f8,
+  400 : #5e96f7,
+  500 : #4183f5,
+  600 : #3b7bf4,
+  700 : #3270f2,
+  800 : #2a66f0,
+  900 : #1c53ee,
+  A100 : #ffffff,
+  A200 : #eff3ff,
+  A400 : #bccbff,
+  A700 : #a2b8ff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$md-kanban-accent: (
+  50 : #e3f8ee,
+  100 : #b8edd5,
+  200 : #89e1b9,
+  300 : #59d49d,
+  400 : #36cb88,
+  500 : #12c273,
+  600 : #10bc6b,
+  700 : #0db460,
+  800 : #0aac56,
+  900 : #059f43,
+  A100 : #caffdc,
+  A200 : #97ffbb,
+  A400 : #64ff99,
+  A700 : #4bff88,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$ngx-kanban-primary: mat.define-palette($md-kanban-primary);
+$ngx-kanban-accent: mat.define-palette($md-kanban-accent);
+
+// The warn palette is optional (defaults to red).
+$ngx-kanban-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$ngx-kanban-theme: mat.define-light-theme((
+  color: (
+    primary: $ngx-kanban-primary,
+    accent: $ngx-kanban-accent,
+    warn: $ngx-kanban-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($ngx-kanban-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+@import './theme/theme.scss';
+
+:root {
+  --primary: #4183f5;
+  --accent: #12c273;
+}
+
+html, body { height: 100%; scroll-behavior: smooth; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+a {
+  text-decoration: none;
+}
+
+
