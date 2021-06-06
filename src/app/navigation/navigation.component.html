@@ -4,7 +4,7 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="!(isHandset$ | async)">
     <div class="sidenav-hero px-3">
-      <a mat-list-item class="logo" routerLink="/">
+      <a mat-list-item class="logo" (click)="close()" routerLink="/">
         <span>KanBan</span>
       </a>
     </div>

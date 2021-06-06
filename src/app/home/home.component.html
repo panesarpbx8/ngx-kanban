@@ -2,7 +2,10 @@
 <p>Kanban board app made with Angular CDK & Firebase</p>
 
 <div class="mt-4">
-	<button mat-button color="accent" class="accent-border">
+	<button *ngIf="!(user$ | async)" (click)="auth.googleLogin()" mat-button color="accent" class="accent-border">
 		<span>Login with google</span>
+	</button>
+	<button *ngIf="	(user$ | async)" routerLink="/dashboard" mat-button color="accent" class="accent-border">
+		<span>View Dashboard</span>
 	</button>
 </div>
