@@ -115,6 +115,7 @@ $ngx-kanban-theme: mat.define-light-theme((
 html, body { height: 100%; scroll-behavior: smooth; }
 
 body { 
+	overscroll-behavior: contain;
   margin: 0; 
   font-family: 'Product Sans', sans-serif; 
   background-color: rgb(245, 247, 248);
