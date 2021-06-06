@@ -3,14 +3,19 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="!(isHandset$ | async)">
+    <div class="sidenav-hero px-3">
+      <a mat-list-item class="logo" routerLink="/">
+        <span>KanBan</span>
+      </a>
+    </div>
     <mat-nav-list>
-      <a mat-list-item (click)="close()" routerLink="/dashboard">Dashboard</a>
-      <a mat-list-item (click)="auth.googleLogin();close()">Google Login</a>
-      <a mat-list-item (click)="logout()">Logout</a>
+      <a mat-list-item class="route" (click)="close()" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <a mat-list-item class="route" (click)="auth.googleLogin();close()">Google Login</a>
+      <a mat-list-item class="route" (click)="logout()">Logout</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <nav [ngClass]="(isHandset$ | async) ? 'px-3' : 'px-4'">
+    <nav class="px-3">
       <button
         type="button"
         mat-icon-button
@@ -18,7 +23,9 @@
         *ngIf="isHandset$ | async">
         <mat-icon>menu</mat-icon>
       </button>
-      <a class="logo" routerLink="/">KanBan</a>
+      <div class="page-title">
+        <span>{{ pageTitle }}</span>
+      </div>
       <span class="fill-space"></span>
       <div *ngIf="user$ | async as user" class="user-info">
         <span class="name">{{ user.displayName.split(' ')[0] }}</span>

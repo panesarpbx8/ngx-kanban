@@ -5,7 +5,7 @@ import { map, shareReplay, take, tap } from 'rxjs/operators';
 import { MatSidenav } from '@angular/material/sidenav';
 import { User } from '../models/user.interface';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -21,11 +21,22 @@ export class NavigationComponent {
   
   @ViewChild('drawer') drawer: MatSidenav;
 
+  pageTitle: string;
+
   constructor(
     private breakpointObserver: BreakpointObserver, 
     public auth: AuthService,
     private router: Router,
   ) {}
+
+  ngOnInit(): void {
+    this.router.events.subscribe(e => {
+      if (e instanceof NavigationEnd) {
+        let title = e.url.split('/')[1];
+        this.pageTitle = title.charAt(0).toUpperCase() + title.slice(1);
+      }
+    });
+  }
 
   close(): void {
     this.isHandset$.pipe(

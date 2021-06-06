@@ -6,11 +6,17 @@
   width: 300px;
 }
 
+.sidenav-hero {
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
 nav {
   position: sticky;
   top: 0;
   z-index: 1;
-  height: 65px;
+  height: 70px;
   display: flex;
   align-items: center;
   // box-shadow: 0 0 10px rgba(118, 126, 138, 0.13);
@@ -19,8 +25,11 @@ nav {
 }
 
 .logo {
-  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
   color: var(--primary);
+  font-family: 'Product Sans';
 }
 
 .page-title {
@@ -45,6 +54,15 @@ nav {
     width: auto;
     box-shadow: 0 0 5px rgba(118, 126, 138, 0.438);
   }
+}
+
+.route {
+  transition: 300ms background-color ease;
+}
+
+.active, .route:hover, .route:focus {
+  color: var(--primary);
+  background-color: var(--primary-light);
 }
 
 @media screen and (min-width: 960px) {
