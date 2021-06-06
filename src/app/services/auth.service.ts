@@ -29,7 +29,7 @@ export class AuthService {
   async login({ email, password }): Promise<void> {
     if (email && password) {
       await this.ngAuth.signInWithEmailAndPassword(email, password);
-      this.toast.success('You are logged in!', {
+      this.toast.success('You are logged in', {
         duration: 3000,
       });
       await this.setSnapshot();
@@ -40,7 +40,7 @@ export class AuthService {
 
   async googleLogin(): Promise<void> {
     await this.ngAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-    this.toast.success('You are logged in!', {
+    this.toast.success('You are logged in', {
       duration: 3000,
     });
     await this.setSnapshot();
@@ -51,7 +51,8 @@ export class AuthService {
   }
   
   async logout(): Promise<void> {
-    await this.ngAuth.signOut();
+    await this.ngAuth.signOut();        
+    this.toast.success('You have been logged out', { duration: 2000 });
   }
 
   async userExists(email: string): Promise<boolean> {

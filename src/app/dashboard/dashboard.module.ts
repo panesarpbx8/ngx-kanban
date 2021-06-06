@@ -14,6 +14,7 @@ import { BoardComponent } from './boards/board/board.component';
 import { NewBoardDialogComponent } from './dialogs/new-board-dialog/new-board-dialog.component';
 import { TaskDialogComponent } from './dialogs/task-dialog/task-dialog.component';
 import { BoardSettingsDialogComponent } from './dialogs/board-settings-dialog/board-settings-dialog.component';
+import { DeleteBoardDialogComponent } from './dialogs/delete-board-dialog/delete-board-dialog.component';
 
 
 @NgModule({
@@ -24,11 +25,13 @@ import { BoardSettingsDialogComponent } from './dialogs/board-settings-dialog/bo
     NewBoardDialogComponent,
     TaskDialogComponent,
     BoardSettingsDialogComponent,
+    DeleteBoardDialogComponent,
   ],
   entryComponents: [
     NewBoardDialogComponent,
     TaskDialogComponent,
     BoardSettingsDialogComponent,
+    DeleteBoardDialogComponent,
   ],
   imports: [
     CommonModule,

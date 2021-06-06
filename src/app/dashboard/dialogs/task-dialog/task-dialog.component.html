@@ -10,7 +10,7 @@
 		</div>
 	</div>
 </mat-dialog-content>
-<div class="info p-2">Changes are not saved unless you click on update button</div>
+<div class="info p-2">Changes are not saved unless you click on {{ data.task.id ? 'Update' : 'Add' }} button</div>
 <mat-dialog-actions class="pb-3">
 	<button mat-button mat-dialog-close [mat-dialog-close]="data" color="accent" class="px-3 mr-1 accent-border">
 		<span>{{ data.task.id ? 'Update' : 'Add' }} task</span>

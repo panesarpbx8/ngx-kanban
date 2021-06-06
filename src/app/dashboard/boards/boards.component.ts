@@ -2,6 +2,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { HotToastService } from '@ngneat/hot-toast';
 import { Observable, Subscription } from 'rxjs';
 import { map, shareReplay, switchMap, take } from 'rxjs/operators';
 import { Board } from 'src/app/models/board.interface';
@@ -27,6 +28,7 @@ export class BoardsComponent implements OnInit, OnDestroy {
     private auth: AuthService,
     private boardService: BoardService,
     private dialog: MatDialog,
+    private toast: HotToastService,
   ) {}
 
   ngOnInit(): void {
@@ -55,7 +57,10 @@ export class BoardsComponent implements OnInit, OnDestroy {
     });
 
     dialogRef.afterClosed().subscribe(readyBoard => {
-      readyBoard && this.boardService.create(readyBoard);
+      if (readyBoard) {
+        this.boardService.create(readyBoard);
+        this.toast.success('Board created', { duration: 2000 });
+      }
     })
   }
 

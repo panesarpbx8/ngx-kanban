@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
       map(user => !!user),
       map(isLoggedIn => {
         if (!isLoggedIn) {
-          this.toast.error('You must be logged in!', {
+          this.toast.error('You must be logged in', {
             duration: 3000,
           });
           return false;

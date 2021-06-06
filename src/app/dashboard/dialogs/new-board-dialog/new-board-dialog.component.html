@@ -5,8 +5,8 @@
 		<input type="text" name="title" class="px-2 py-2" [(ngModel)]="board.title" autocomplete="off" placeholder="title">
 	</div>
 </mat-dialog-content>
-<div class="info p-2">Changes are not saved unless you click on update button</div>
-<mat-dialog-actions>
+<div class="info p-2">Changes are not saved unless you click on Add button</div>
+<mat-dialog-actions class="pb-3">
 	<button mat-button mat-dialog-close [mat-dialog-close]="board" color="accent" class="px-3 mr-1 accent-border">
 		<span>Add board</span>
 	</button>
