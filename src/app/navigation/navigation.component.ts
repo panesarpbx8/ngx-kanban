@@ -47,7 +47,7 @@ export class NavigationComponent {
 
   async logout(): Promise<void> {
     await this.auth.logout();
-    await this.router.navigateByUrl('/login');
+    await this.router.navigateByUrl('/');
     this.close();
   }
   

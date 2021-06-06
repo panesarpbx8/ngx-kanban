@@ -9,7 +9,6 @@ import { User } from '../models/user.interface';
 export class AuthService {
   
   user$: Observable<User>;
-
   snapshot: User;
 
   constructor(private ngAuth: AngularFireAuth, private toast: HotToastService) { 

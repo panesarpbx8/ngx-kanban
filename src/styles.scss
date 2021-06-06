@@ -113,7 +113,12 @@ $ngx-kanban-theme: mat.define-light-theme((
 }
 
 html, body { height: 100%; scroll-behavior: smooth; }
-body { margin: 0; font-family: 'Product Sans', sans-serif; }
+
+body { 
+  margin: 0; 
+  font-family: 'Product Sans', sans-serif; 
+  background-color: rgb(245, 247, 248);
+}
 
 a {
   text-decoration: none;

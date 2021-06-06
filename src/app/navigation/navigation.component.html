@@ -24,7 +24,7 @@
         <mat-icon>menu</mat-icon>
       </button>
       <div class="page-title">
-        <span>{{ pageTitle }}</span>
+        <span>{{ pageTitle !== '' ? pageTitle : 'Home' }}</span>
       </div>
       <span class="fill-space"></span>
       <div *ngIf="user$ | async as user" class="user-info">
