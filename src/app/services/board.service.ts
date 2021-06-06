@@ -14,6 +14,19 @@ export class BoardService extends FireService<Board> {
     super(firestore, 'boards');
   }
 
+  async sort(boards: Board[]): Promise<void> {
+    const fs = firebase.firestore();
+    const batch = fs.batch();
+    const refs = boards.map(board => fs.collection(`boards`).doc(board.id));
+
+    refs.forEach((ref, index) => batch.update(ref, { priority: index }));
+    await batch.commit();
+  }
+
+  async sortTasks(boardId: string, tasks: Task[]): Promise<void> {
+    await this.firestore.doc<Board>(`boards/${boardId}`).update({ tasks });
+  }
+
   findByUID(uid: string): Observable<Board[]> {
     return this.firestore.collection<Board>('boards', ref => {
       return ref.where('uid', '==', uid).orderBy('priority', 'asc');
@@ -21,28 +34,29 @@ export class BoardService extends FireService<Board> {
   }
 
   async addTask(boardId: string, task: Task): Promise<void> {
+    await this.firestore.doc<Board>(`boards/${boardId}`).ref.update({
+      tasks: firebase.firestore.FieldValue.arrayUnion(task),
+    });
+  }
+
+  async removeTask(boardId: string, task: Task): Promise<void> {
+    await this.firestore.doc<Board>(`boards/${boardId}`).ref.update({
+      tasks: firebase.firestore.FieldValue.arrayRemove(task),
+    })
+  }
+
+  async updateTask(boardId: string, task: Task): Promise<void> {
     const boardRef = this.firestore.doc<Board>(`boards/${boardId}`);
-    
+  
     const board = await boardRef.valueChanges().pipe(take(1)).toPromise();
-    task.id = this.firestore.createId();
-    if (task.content === '') task.content = 'Your task';
-    board.tasks.push(task);
+    const index = board.tasks.findIndex(t => t.id === task.id);
+    board.tasks[index] = task;
     
-    await boardRef.set(board, { merge: true });
+    await boardRef.set(board, { merge: true });    
   }
 
-  sort(boards: Board[]) {
-    const fs = firebase.firestore();
-    const batch = fs.batch();
-    const refs = boards.map(board => fs.collection(`boards`).doc(board.id));
-
-    refs.forEach((ref, index) => batch.update(ref, { priority: index }));
-    batch.commit();
+  get labels(): ['skyblue', 'purple', 'red', 'teal', 'yellow'] {
+    return ['skyblue', 'purple', 'red', 'teal', 'yellow'];
   }
-
-  async updateTasks(boardId: string, tasks: Task[]): Promise<void> {
-    await this.firestore.doc<Board>(`boards/${boardId}`).update({ tasks });
-  }
-
 
 }

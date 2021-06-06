@@ -3,6 +3,8 @@
 		<h1 class="board-heading">
 			<span>{{ board.title }}</span>
 			<ng-content></ng-content>
+			<span class="fill-space"></span>
+			<mat-icon class="icon" (click)="openBoardSettingsDialog()">settings</mat-icon>
 		</h1>
 	</mat-card-title>
 	<mat-card-content>
@@ -13,7 +15,8 @@
 			<div *ngFor="let task of board.tasks"	
 				class="task p-3 mb-2" 
 				cdkDrag
-				[ngClass]="task.label">
+				[ngClass]="task.label"
+				(click)="openUpdateTaskDialog(task)">
 				{{ task.content }}
 			</div>
 		</div>
@@ -21,7 +24,7 @@
 	<mat-card-footer class="px-3 pb-3">
 		<button mat-stroked-button color="accent" 
 			class="px-3 mr-3 accent-border"
-			(click)="openNewTaskDialog(board.id)">
+			(click)="openAddTaskDialog()">
 			<span>New task</span>
 		</button>
 		<button mat-button color="warn" class="px-1">

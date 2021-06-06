@@ -9,23 +9,26 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { NewTaskDialogComponent } from './dialogs/new-task-dialog/new-task-dialog.component';
 import { FormsModule } from '@angular/forms';
 import { BoardComponent } from './boards/board/board.component';
 import { NewBoardDialogComponent } from './dialogs/new-board-dialog/new-board-dialog.component';
+import { TaskDialogComponent } from './dialogs/task-dialog/task-dialog.component';
+import { BoardSettingsDialogComponent } from './dialogs/board-settings-dialog/board-settings-dialog.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     BoardsComponent,
-    NewTaskDialogComponent,
     BoardComponent,
     NewBoardDialogComponent,
+    TaskDialogComponent,
+    BoardSettingsDialogComponent,
   ],
   entryComponents: [
-    NewTaskDialogComponent,
     NewBoardDialogComponent,
+    TaskDialogComponent,
+    BoardSettingsDialogComponent,
   ],
   imports: [
     CommonModule,

@@ -25,6 +25,10 @@
   }
 }
 
+.info {
+  background-color: #f4f4f4;
+  border-left: 2px solid var(--primary);
+}
 
 @media (min-width: 768px) {
   .container {

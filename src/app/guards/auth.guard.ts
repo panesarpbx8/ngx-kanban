@@ -1,19 +1,32 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
 
-  constructor(private ngAuth: AngularFireAuth) {}
+  constructor(private auth: AuthService, private toast: HotToastService, private router: Router) {}
 
-  async canActivate(
+  canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Promise<boolean> {
-    const user = await this.ngAuth.currentUser;  
-    const isLoggedIn = !!user;
-    return isLoggedIn;
+  ): Observable<boolean> {
+    
+    return this.auth.user$.pipe(
+      map(user => !!user),
+      map(isLoggedIn => {
+        if (!isLoggedIn) {
+          this.toast.error('You must be logged in!', {
+            duration: 3000,
+          });
+          return false;
+        }
+        return true;
+      }),
+    );
   }
   
 }

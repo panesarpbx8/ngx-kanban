@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>{{ data.task.id ? 'Update' : 'Add new' }} task</h1>
+<mat-dialog-content>
+	<div class="input-box mb-3">
+		<label class="mb-2">Enter description</label>
+		<input type="text" name="description" class="px-2 py-2" [(ngModel)]="data.task.content" autocomplete="off" placeholder="description">
+	</div>
+	<div class="labels">
+		<div *ngFor="let label of boardService.labels" class="label" (click)="changeLabel(label)">
+			<mat-icon [class.selected]="selectedLabel === label" [ngClass]="label">lens</mat-icon>
+		</div>
+	</div>
+</mat-dialog-content>
+<div class="info p-2">Changes are not saved unless you click on update button</div>
+<mat-dialog-actions class="pb-3">
+	<button mat-button mat-dialog-close [mat-dialog-close]="data" color="accent" class="px-3 mr-1 accent-border">
+		<span>{{ data.task.id ? 'Update' : 'Add' }} task</span>
+	</button>
+	<button mat-button (click)="close()" color="warn">Cancel</button>
+	<button *ngIf="data.task.id" mat-button color="warn" (click)="deleteTask()">Delete this task</button>
+</mat-dialog-actions>

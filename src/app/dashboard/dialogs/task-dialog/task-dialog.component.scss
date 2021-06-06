@@ -1,0 +1,30 @@
+.labels {
+	display: flex;
+	align-items: center;
+	gap: .5rem;
+
+	.label {
+		cursor: pointer;
+		user-select: none;
+
+		mat-icon.selected {
+			border-bottom: 2px solid black;
+		}
+
+		mat-icon.purple {
+			color: #B15CFF;
+		}
+		mat-icon.red {
+			color: #E74A4A;
+		}
+		mat-icon.skyblue {
+			color: #71DEFF;
+		}
+		mat-icon.teal {
+			color: #2dccaa;
+		}
+		mat-icon.yellow {
+			color: #FFCF44;
+		}
+	}
+}

@@ -1,8 +1,9 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Subscription } from 'rxjs';
-import { switchMap, take } from 'rxjs/operators';
+import { Observable, Subscription } from 'rxjs';
+import { map, shareReplay, switchMap, take } from 'rxjs/operators';
 import { Board } from 'src/app/models/board.interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { BoardService } from 'src/app/services/board.service';
@@ -18,7 +19,11 @@ export class BoardsComponent implements OnInit, OnDestroy {
   private sub: Subscription;
   boards: Board[];
 
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(map(result => result.matches), shareReplay());
+
   constructor(
+    private breakpointObserver: BreakpointObserver,
     private auth: AuthService,
     private boardService: BoardService,
     private dialog: MatDialog,
@@ -38,7 +43,7 @@ export class BoardsComponent implements OnInit, OnDestroy {
   async openNewBoardDialog(): Promise<void> {
     const currentUserId = (await this.auth.user$.pipe(take(1)).toPromise()).uid;
     const board: Board = {
-      tasks: [{ content: 'your task', label: 'teal' }],
+      tasks: [],
       title: '',
       uid: currentUserId,
       priority: this.boards.length,

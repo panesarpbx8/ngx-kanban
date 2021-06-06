@@ -8,6 +8,16 @@ mat-card {
   gap: 1rem;
 }
 
+.icon {
+  cursor: pointer;
+  user-select: none;
+  color: #b1c5ca;
+}
+
+.fill-space {
+  flex: 1;
+}
+
 .task {
   border-radius: 5px;
   font-size: 1.1rem;
@@ -64,5 +74,5 @@ mat-card {
 }
 
 .cdk-drag-placeholder {
-  opacity: .3;
+  opacity: .4;
 }

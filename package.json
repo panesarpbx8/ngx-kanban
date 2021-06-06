@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "git add . && git commit -m init && ng build && firebase deploy"
+    "git": "git add . && git commit -m init"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +22,8 @@
     "@angular/platform-browser": "~12.0.3",
     "@angular/platform-browser-dynamic": "~12.0.3",
     "@angular/router": "~12.0.3",
+    "@ngneat/hot-toast": "^2.0.2",
+    "@ngneat/overview": "^1.0.0",
     "firebase": "^8.6.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",

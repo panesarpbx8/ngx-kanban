@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>{{ board.title }}</h1>
+<mat-dialog-content>
+	<div class="input-box mb-3">
+		<label class="mb-2">Board title</label>
+		<input type="text" name="title" [(ngModel)]="board.title" autocomplete="off" class="px-2 py-2">
+	</div>
+</mat-dialog-content>
+<div class="info p-2">Changes are not saved unless you click on update button</div>
+<mat-dialog-actions>
+	<button mat-button mat-dialog-close [mat-dialog-close]="board" color="accent" class="px-3 mr-1 accent-border">Update</button>
+	<button mat-button (click)="close()" color="warn">Close</button>
+</mat-dialog-actions>

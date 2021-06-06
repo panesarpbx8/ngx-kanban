@@ -1,7 +1,7 @@
 <div *ngIf="boards; else loading" 
   class="boards"
   cdkDropList
-  cdkDropListOrientation="horizontal"
+  [cdkDropListOrientation]="(isHandset$ | async) ? 'vertical' : 'horizontal'"
   (cdkDropListDropped)="drop($event)">
   <app-board cdkDrag *ngFor="let board of boards" [board]="board">
     <mat-icon class="drag-handle" cdkDragHandle>drag_indicator</mat-icon>
