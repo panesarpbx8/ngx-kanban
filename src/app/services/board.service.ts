@@ -34,6 +34,7 @@ export class BoardService extends FireService<Board> {
   }
 
   async addTask(boardId: string, task: Task): Promise<void> {
+    task.id = this.firestore.createId();
     await this.firestore.doc<Board>(`boards/${boardId}`).ref.update({
       tasks: firebase.firestore.FieldValue.arrayUnion(task),
     });

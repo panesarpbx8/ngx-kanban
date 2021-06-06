@@ -22,12 +22,10 @@
 		</div>
 	</mat-card-content>
 	<mat-card-footer class="px-3 pb-3">
-		<button mat-stroked-button color="accent" 
-			class="px-3 mr-3 accent-border"
-			(click)="openAddTaskDialog()">
+		<button mat-stroked-button color="accent" class="px-3 mr-3 accent-border" (click)="openAddTaskDialog()">
 			<span>New task</span>
 		</button>
-		<button mat-button color="warn" class="px-1">
+		<button mat-button color="warn" class="px-1" (click)="deleteBoard()">
 			<span>Delete board</span>
 		</button>
 	</mat-card-footer>

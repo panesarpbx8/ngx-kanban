@@ -73,4 +73,8 @@ export class BoardComponent implements OnInit {
     })
   }
 
+  async deleteBoard(): Promise<void> {
+    await this.boardService.delete(this.board.id);
+  }
+
 }

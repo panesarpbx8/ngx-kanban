@@ -4,7 +4,7 @@
 		<label class="mb-2">Enter description</label>
 		<input type="text" name="description" class="px-2 py-2" [(ngModel)]="data.task.content" autocomplete="off" placeholder="description">
 	</div>
-	<div class="labels">
+	<div class="labels mb-2">
 		<div *ngFor="let label of boardService.labels" class="label" (click)="changeLabel(label)">
 			<mat-icon [class.selected]="selectedLabel === label" [ngClass]="label">lens</mat-icon>
 		</div>
@@ -16,5 +16,5 @@
 		<span>{{ data.task.id ? 'Update' : 'Add' }} task</span>
 	</button>
 	<button mat-button (click)="close()" color="warn">Cancel</button>
-	<button *ngIf="data.task.id" mat-button color="warn" (click)="deleteTask()">Delete this task</button>
+	<button *ngIf="data.task.id" mat-button color="warn" (click)="deleteTask()">Delete task</button>
 </mat-dialog-actions>
