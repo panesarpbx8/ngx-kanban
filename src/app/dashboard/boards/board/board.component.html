@@ -14,9 +14,11 @@
 			(cdkDropListDropped)="drop($event)">
 			<div *ngFor="let task of board.tasks"	
 				class="task p-3 mb-2" 
-				cdkDrag
+				[class.is-done]="task.isDone"
 				[ngClass]="task.label"
+				cdkDrag
 				(click)="openUpdateTaskDialog(task)">
+				<mat-icon class="float-right" *ngIf="task.isDone">check</mat-icon>
 				{{ task.content }}
 			</div>
 		</div>

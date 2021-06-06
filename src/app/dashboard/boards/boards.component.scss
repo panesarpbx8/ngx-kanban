@@ -13,6 +13,8 @@
 
 .drag-handle {
   cursor: move;
+  user-select: none;
+  color: rgba(100, 116, 129, 0.774);
 }
 
 /* Highlight the list item that is being dragged. */

@@ -1,5 +1,5 @@
 mat-card {
-  box-shadow: 0 0 10px rgba(118, 126, 138, 0.13);
+  box-shadow: 0 2px 5px rgba(118, 126, 138, 0.13);
 }
 
 .board-heading {
@@ -11,7 +11,7 @@ mat-card {
 .icon {
   cursor: pointer;
   user-select: none;
-  color: #b1c5ca;
+  color: rgba(100, 116, 129, 0.596);
 }
 
 .fill-space {
@@ -23,6 +23,10 @@ mat-card {
   font-size: 1.1rem;
   box-shadow: 0 0 5px rgba(118, 126, 138, 0.13);
   cursor: pointer;
+}
+
+.is-done {
+  text-decoration: line-through;
 }
 
 .task.red {

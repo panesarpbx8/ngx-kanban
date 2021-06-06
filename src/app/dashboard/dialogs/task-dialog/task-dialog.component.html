@@ -1,4 +1,5 @@
 <h1 mat-dialog-title>{{ data.task.id ? 'Update' : 'Add new' }} task</h1>
+<div class="info p-2 mb-3">Changes are not saved unless you click on {{ data.task.id ? 'Update' : 'Add' }} button</div>
 <mat-dialog-content>
 	<div class="input-box mb-3">
 		<label class="mb-2">Enter description</label>
@@ -9,12 +10,14 @@
 			<mat-icon [class.selected]="selectedLabel === label" [ngClass]="label">lens</mat-icon>
 		</div>
 	</div>
+	<div *ngIf="data.task.id" class="mb-2">
+		<mat-checkbox [(ngModel)]="data.task.isDone" color="primary">Done</mat-checkbox>
+	</div>
 </mat-dialog-content>
-<div class="info p-2">Changes are not saved unless you click on {{ data.task.id ? 'Update' : 'Add' }} button</div>
 <mat-dialog-actions class="pb-3">
 	<button mat-button mat-dialog-close [mat-dialog-close]="data" color="accent" class="px-3 mr-1 accent-border">
 		<span>{{ data.task.id ? 'Update' : 'Add' }} task</span>
 	</button>
-	<button mat-button (click)="close()" color="warn">Cancel</button>
 	<button *ngIf="data.task.id" mat-button color="warn" (click)="deleteTask()">Delete task</button>
+	<button mat-button (click)="close()" color="warn">Cancel</button>
 </mat-dialog-actions>

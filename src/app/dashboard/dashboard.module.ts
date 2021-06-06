@@ -15,6 +15,7 @@ import { NewBoardDialogComponent } from './dialogs/new-board-dialog/new-board-di
 import { TaskDialogComponent } from './dialogs/task-dialog/task-dialog.component';
 import { BoardSettingsDialogComponent } from './dialogs/board-settings-dialog/board-settings-dialog.component';
 import { DeleteBoardDialogComponent } from './dialogs/delete-board-dialog/delete-board-dialog.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { DeleteBoardDialogComponent } from './dialogs/delete-board-dialog/delete
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
+    MatCheckboxModule,
   ]
 })
 export class DashboardModule { }

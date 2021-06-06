@@ -49,11 +49,11 @@ export class BoardComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(data => {
-      if (data.isDelete) {
+      if (data && data.isDelete) {
         this.boardService.removeTask(this.board.id, data.task);
         this.toast.success('Task deleted', { duration: 1500 });
       } else {
-        if (data.task) {
+        if (data && data.task) {
           this.boardService.updateTask(this.board.id, task);
           this.toast.success('Changes saved', { duration: 1500 });
         }

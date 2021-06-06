@@ -34,16 +34,22 @@ export class BoardService extends FireService<Board> {
   }
 
   async addTask(boardId: string, task: Task): Promise<void> {
+    const boardRef = this.firestore.doc<Board>(`boards/${boardId}`);
+    
+    const board = await boardRef.valueChanges().pipe(take(1)).toPromise();
     task.id = this.firestore.createId();
-    await this.firestore.doc<Board>(`boards/${boardId}`).ref.update({
-      tasks: firebase.firestore.FieldValue.arrayUnion(task),
-    });
+    board.tasks.push(task);
+    
+    await boardRef.set(board, { merge: true });
   }
 
   async removeTask(boardId: string, task: Task): Promise<void> {
-    await this.firestore.doc<Board>(`boards/${boardId}`).ref.update({
-      tasks: firebase.firestore.FieldValue.arrayRemove(task),
-    })
+    const boardRef = this.firestore.doc<Board>(`boards/${boardId}`);
+  
+    const board = await boardRef.valueChanges().pipe(take(1)).toPromise();
+    board.tasks =  board.tasks.filter(t => t.id !== task.id);
+    
+    await boardRef.set(board, { merge: true });
   }
 
   async updateTask(boardId: string, task: Task): Promise<void> {
